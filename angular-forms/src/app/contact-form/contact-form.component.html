@@ -1,0 +1,137 @@
+<div>
+  <h2>Registration Form</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        [class.is-invalid]="userName?.invalid && userName?.touched"
+        formControlName="userName"
+        id="name"
+        type="text"
+        class="form-control"
+        pattern="[A-Za-z]{2,}$"
+      />
+      <div *ngIf="userName?.invalid && userName?.touched">
+        <div *ngIf="userName?.errors?.['required']" class="text-danger">
+          Name is required.
+        </div>
+        <div *ngIf="userName?.errors?.['minlength']" class="text-danger">
+          Name must be at least 2 characters.
+        </div>
+        <div *ngIf="userName?.errors?.['maxlength']" class="text-danger">
+          Name must be smaller than 20 characters.
+        </div>
+        <div *ngIf="userName?.errors?.['forbiddenName']" class="text-danger">
+          {{ userName?.errors?.['forbiddenName']?.value }} is not allowed.
+        </div>
+        <div *ngIf="userName?.errors?.['pattern']" class="text-danger">
+          Name doesn't match the pattern.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input
+        [class.is-invalid]="userSurname?.invalid && userSurname?.touched"
+        formControlName="userSurname"
+        id="surname"
+        type="text"
+        class="form-control"
+        pattern="[A-Za-z]{2,}$"
+      />
+      <div *ngIf="userSurname?.invalid && userSurname?.touched">
+        <div *ngIf="userSurname?.errors?.['required']" class="text-danger">
+          Surname is required.
+        </div>
+        <div *ngIf="userSurname?.errors?.['minlength']" class="text-danger">
+          Surname must be at least 2 characters.
+        </div>
+        <div *ngIf="userSurname?.errors?.['maxlength']" class="text-danger">
+          Surname must be smaller than 20 characters.
+        </div>
+        <div *ngIf="userSurname?.errors?.['forbiddenName']" class="text-danger">
+          {{ userSurname?.errors?.['forbiddenName']?.value }} is not allowed.
+        </div>
+        <div *ngIf="userSurname?.errors?.['pattern']" class="text-danger">
+          Surname doesn't match the pattern.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Date of birth</label>
+      <input
+        [class.is-invalid]="dateOfBirth?.invalid && dateOfBirth?.touched"
+        formControlName="dateOfBirth"
+        id="dateOfBirth"
+        type="date"
+        class="form-control"
+        min="1900-01-01"
+        max="2016-03-01"
+        pattern="\d{4}-\d{2}-\d{2}"
+      />
+      <div *ngIf="dateOfBirth?.invalid && dateOfBirth?.touched">
+        <div *ngIf="dateOfBirth?.errors?.['required']" class="text-danger">
+          Date of birth is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        [class.is-invalid]="userEmail?.invalid && userEmail?.touched"
+        formControlName="userEmail"
+        id="email"
+        type="email"
+        class="form-control"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      />
+      <div *ngIf="userEmail?.invalid && userEmail?.touched">
+        <div *ngIf="userEmail?.errors?.['minlength']" class="text-danger">
+          Email must be at least 5 characters.
+        </div>
+        <div *ngIf="userEmail?.errors?.['maxlength']" class="text-danger">
+          Email must be smaller than 50 characters.
+        </div>
+        <div *ngIf="userEmail?.errors?.['forbiddenName']" class="text-danger">
+          {{ userEmail?.errors?.['forbiddenName']?.value }} is not allowed.
+        </div>
+        <div *ngIf="userEmail?.errors?.['pattern']" class="text-danger">
+          Email doesn't match the pattern.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone +421</label>
+      <input
+        [class.is-invalid]="userPhone?.invalid && userPhone?.touched"
+        formControlName="userPhone"
+        id="phone"
+        type="tel"
+        class="form-control"
+        pattern="^\d{9}$"
+      />
+      <div *ngIf="userPhone?.invalid && userPhone?.touched">
+        <div *ngIf="userPhone?.errors?.['required']" class="text-danger">
+          Phone number is required.
+        </div>
+        <div
+          *ngIf="userPhone?.errors?.['minlength'] || userPhone?.errors?.['maxlength']"
+          class="text-danger"
+        >
+          Phone number must be 9 numbers.
+        </div>
+        <div *ngIf="userPhone?.errors?.['pattern']" class="text-danger">
+          Phone number doesn't match the pattern.
+        </div>
+      </div>
+    </div>
+
+    <button
+      [disabled]="!registrationForm.valid"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
