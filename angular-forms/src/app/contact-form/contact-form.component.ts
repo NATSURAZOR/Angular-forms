@@ -35,7 +35,6 @@ export class ContactFormComponent {
   }
 
   registrationForm = this.fb.group({
-    buttonSub: [],
     userName: [
       '',
       [
@@ -85,10 +84,12 @@ export class ContactFormComponent {
   });
 
   onSubmit() {
+    this.registrationForm.reset();
     console.log(this.registrationForm.value);
     this._registrationService.register(this.registrationForm.value).subscribe(
       (response) => console.log('Success!', response),
       (error) => console.error('Error!', error)
     );
+    alert('You have Successfully Registered for Vaccination');
   }
 }
