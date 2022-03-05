@@ -1,0 +1,64 @@
+.under-nav-section {
+  width: 100%;
+  height: 0.4rem;
+  background-size: 15rem;
+  background-repeat: round;
+  /* yep, that's what you think, the flag of France ._. */
+  background-image: url(../../../images/Flag_of_France.svg.png);
+}
+
+.youtube {
+  background-image: url(../../../images/youtube.png);
+}
+
+.twitter {
+  background-image: url(../../../images/twitter.png);
+}
+
+.facebook {
+  background-image: url(../../../images/facebook.png);
+}
+
+footer {
+  min-height: 10vh;
+  background-color: black;
+  color: white;
+  display: flex;
+}
+
+.footer-info {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links-info {
+  display: flex;
+}
+.our-info p {
+  font-size: 1.5rem;
+}
+
+.youtube,
+.twitter,
+.facebook {
+  margin: 0.3rem;
+  width: 3rem;
+  height: 3rem;
+  background-size: 3rem;
+  color: black;
+}
+
+.youtube:hover,
+.twitter:hover,
+.facebook:hover {
+  transform: translateY(-0.2rem);
+}
+
+@media screen and (max-width: 700px) {
+  .footer-info {
+    width: 98%;
+  }
+}

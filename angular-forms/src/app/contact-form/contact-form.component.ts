@@ -35,6 +35,7 @@ export class ContactFormComponent {
   }
 
   registrationForm = this.fb.group({
+    buttonSub: [],
     userName: [
       '',
       [
